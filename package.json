@@ -1,0 +1,9 @@
+{
+  "name": "full-stack-task",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

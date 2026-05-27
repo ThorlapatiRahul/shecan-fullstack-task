@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>She Can Foundation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>She Can Foundation</h1>
+
+<form id="form">
+    <input type="text" name="name" placeholder="Enter Name" required><br>
+    <input type="email" name="email" placeholder="Enter Email" required><br>
+    <textarea name="message" placeholder="Your Message" required></textarea><br>
+    <button type="submit">Submit</button>
+</form>
+
+<p id="response"></p>
+
+<script>
+const form = document.getElementById('form');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+    const obj = Object.fromEntries(data);
+
+    const res = await fetch('/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(obj)
+    });
+
+    const text = await res.text();
+    document.getElementById('response').innerText = text;
+    form.reset();
+});
+</script>
+
+</body>
+</html>
